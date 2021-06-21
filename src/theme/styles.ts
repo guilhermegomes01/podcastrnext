@@ -1,11 +1,7 @@
-import { Styles } from "@chakra-ui/theme-tools"
-
-const styles: Styles = {
+export default {
     global: {
         "body": {
-            color: "gray.500"
+            background: "gray.50"
         }
     }
-};
-
-export default styles
+}
