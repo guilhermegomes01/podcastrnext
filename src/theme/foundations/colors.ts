@@ -15,3 +15,5 @@ const colors = {
     800: "#6F48C9",
   },
 };
+
+export default colors
