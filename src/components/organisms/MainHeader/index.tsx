@@ -7,7 +7,7 @@ import ptBR from "date-fns/locale/pt-BR";
 
 import Logo from "../../atoms/Logo";
 
-function Header() {
+function MainHeader() {
   const currentDate = format(new Date(), "EEEEEE, d MMMM", { locale: ptBR });
 
   return (
@@ -18,6 +18,7 @@ function Header() {
       bg="white"
       borderBottom="1px solid"
       borderBottomColor="gray.100"
+      as="header"
     >
       <Logo />
 
@@ -39,4 +40,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default MainHeader;

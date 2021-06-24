@@ -1,6 +1,6 @@
 import { screen, render } from '@testing-library/react'
 
-import Header from '../components/organisms/Header'
+import Header from '../components/organisms/MainHeader'
 
 describe("Header Component", () => {
     test("Should render a logo", () => {
