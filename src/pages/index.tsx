@@ -1,5 +1,6 @@
 import React from "react";
 import { GetStaticProps } from "next";
+import { Box } from "@chakra-ui/react";
 
 import { format, parseISO } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
@@ -7,7 +8,10 @@ import ptBR from "date-fns/locale/pt-BR";
 import api from "../services/api";
 import convertDurationToTimeString from "../utils/convertDurationToTimeString";
 
-type Episode = {
+import LatestEpisodesView from "../components/organisms/LatestEpisodesView";
+import AllEpisodesView from "../components/organisms/AllEpisodesView";
+
+export type Episode = {
   id: string;
   title: string;
   members: string;
@@ -19,16 +23,17 @@ type Episode = {
 };
 
 type HomeProps = {
-  episodes: Episode[];
+  latestEpisodes: Episode[];
+  allEpisodes: Episode[];
 };
 
-export default function Home({ episodes }: HomeProps) {
-  return episodes.map((episode) => (
-    <div key={episode.id}>
-      <div>{episode.title}</div>
-      <hr />
-    </div>
-  ));
+export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
+  return (
+    <Box>
+      <LatestEpisodesView latestEpisodes={latestEpisodes} />
+      <AllEpisodesView />
+    </Box>
+  );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -55,9 +60,13 @@ export const getStaticProps: GetStaticProps = async () => {
     };
   });
 
+  const latestEpisodes = episodes.slice(0, 2);
+  const allEpisodes = episodes.slice(2, episodes.length)
+
   return {
     props: {
-      episodes,
+      latestEpisodes,
+      allEpisodes
     },
     revalidate: 60 * 60 * 24,
   };
