@@ -18,6 +18,7 @@ function MainHeader() {
       bg="white"
       borderBottom="1px solid"
       borderBottomColor="gray.100"
+      height="24"
       as="header"
     >
       <Logo />
